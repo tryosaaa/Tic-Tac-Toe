@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Board from "./Board"
-import { Button, Container, Typography,AppBar , CssBaseline, Grid, Snackbar, Clear ,spacing,Box } from '@material-ui/core';
+import { Button, Typography,AppBar , Grid, Snackbar, Clear,Box } from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import Avatar from '@material-ui/core/Avatar';
 
