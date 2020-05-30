@@ -8,7 +8,7 @@ import {Button ,Grid} from '@material-ui/core';
        function Square(props) {
             return (
               <Box mb={3}>
-                <Button  variant="outlined" color="secondary" className="square" onClick={props.onClick} >
+                <Button size="large" variant="outlined" color="secondary" className="square" onClick={props.onClick} >
                 {props.value}
                 </Button>
               </Box>
@@ -20,7 +20,7 @@ import {Button ,Grid} from '@material-ui/core';
     renderSquare(i) {
       return (
         <Square
-          value={this.props.squares[i] || "+"}
+          value={this.props.squares[i] || "⠀"}
           onClick={() => this.props.onClick(i)}
         />
       );
