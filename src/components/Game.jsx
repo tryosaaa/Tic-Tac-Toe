@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Board from "./Board"
-import { Button, Typography,AppBar , Grid, Snackbar, Clear,Box } from '@material-ui/core';
+import { Button, Typography,AppBar , Grid, Snackbar,Box, ListItem } from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import Avatar from '@material-ui/core/Avatar';
+import Icon from '@material-ui/core/Icon';
 
 
 
@@ -55,6 +56,22 @@ class Game extends React.Component {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
+
+      const moves = history.map((step, move) => {
+        const desc = move ?
+        'move ' + move :
+        'Reset The Game ';
+        return (
+          <li style={{display:'flex',justifyContent:'center',alignItems:'center',alignContent:"flex-end"}} key={move}>
+            <Button style={{marginBottom:"0.5rem"}} variant="outlined" size="small"  color="secondary" onClick={() => this.jumpTo(move)}>{desc}</Button>
+          </li>
+        );
+      });
+
+
+
+
+
   
       let status;
       if(this.state.stepNumber == 0){
@@ -71,35 +88,46 @@ class Game extends React.Component {
   
       return (
         <Box bgcolor="rgb(255, 251, 251)">
-          <Box marginBottom="1.2rem">
-              <AppBar position="static" color= "secondary">
-                <Box m="1.5rem">
-                <Grid container style={{margin:'auto',width:'600px'}}>
-                      <Grid item xs={1}>
-                      <Avatar style={{width:"60px", height:"50px" }} alt="Remy Sharp" variant="rounded" src="https://lh3.googleusercontent.com/xv4-66b1Ot6YEUWoNZ5HDCLjWv9NkitxWEDvuwcHiWciBkLXiLH3OfvsH2EdPnNtl54" />
-                      </Grid>
-                      <Grid item xs={11}>
-                        <Typography variant="h4" align="center" component="h1"style={{width:'100%'}}>
-                                     Tic Tac Toe Game Application 
-                         </Typography>
-                      </Grid>
-                      </Grid>
-                </Box>
-          </AppBar>
-          </Box>
-          <div style={{display:'flex' ,justifyContent:'center',marginTop:'4.7rem'}} className="game-info">
-            <Alert severity="info"><AlertTitle>Game Situation</AlertTitle><strong>{status}</strong></Alert>
-            </div>
-        <div className="game" style={{display:'flex',height:'45vh',justifyContent:'center',alignItems:'center',alignContent:'center',flexWrap:'wrap'}}>
-          <div className="game-board">
-            <Board
-              squares={current.squares}
-              onClick={i => this.handleClick(i)}
-            />
-          </div>
-        </div>
+        <Box marginBottom="1.2rem">
+            <AppBar position="static" color= "secondary">
+              <Box m="1.5rem">
+              <Grid container style={{margin:'auto',width:'600px'}}>
+                    <Grid item xs={1}>
+                    <Avatar style={{width:"60px", height:"50px" }} alt="Remy Sharp" variant="rounded" src="https://lh3.googleusercontent.com/xv4-66b1Ot6YEUWoNZ5HDCLjWv9NkitxWEDvuwcHiWciBkLXiLH3OfvsH2EdPnNtl54" />
+                    </Grid>
+                    <Grid item xs={11}>
+                      <Typography variant="h4" align="center" component="h1"style={{width:'100%'}}>
+                                  Tic Tac Toe Game Application 
+                      </Typography>
+                    </Grid>
+                    </Grid>
+              </Box>
+        </AppBar>
+        </Box>
+         <Grid container>
+            <Grid item xs={6}>
+                <div style={{display:'flex' ,justifyContent:"flex-end",marginTop:'4.7rem',marginRight:"3.3rem"}} className="game-info">
+                  <Alert severity="info"><AlertTitle>Game Situation</AlertTitle><strong>{status}</strong></Alert>
+                  </div>
+              <div className="game" style={{display:'flex',height:'45vh',justifyContent:'flex-end',alignItems:'center',alignContent:'center',flexWrap:'wrap'}}>
+                <div className="game-board">
+                  <Board
+                    squares={current.squares}
+                    onClick={i => this.handleClick(i)}
+                  />
+                </div>
+               </div>
+              </Grid>
+             <Grid item xs={3} style={{marginTop:"5rem",marginRight:"1rem"}}>
+           <ul>{moves}</ul>
+         </Grid>
+          
+            
+        </Grid>  
         </Box>
       );
+      
+
     }
   }
 
@@ -132,6 +160,3 @@ class Game extends React.Component {
   
  
 export default Game;
-
-
-
