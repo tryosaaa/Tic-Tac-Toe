@@ -1,4 +1,4 @@
-## Artificial intelligence may be added soon!
+## Artificial intelligence added!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
