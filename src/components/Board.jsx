@@ -28,7 +28,7 @@ import {Button ,Grid} from '@material-ui/core';
   
     render() {
       return (
-        <Grid container spacing={3} style={{margin:'auto',width:'300px'}}>
+        <Grid container spacing={3} style={{margin:'auto'}}>
            <Grid item xs={4}>
               {this.renderSquare(0)}
               {this.renderSquare(1)}
