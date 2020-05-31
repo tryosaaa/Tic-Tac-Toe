@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import Avatar from "@material-ui/core/Avatar";
-
+import { red } from "@material-ui/core/colors";
 
 class Game extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class Game extends React.Component {
         },
       ],
       stepNumber: 0,
-     
     };
   }
 
@@ -44,18 +43,14 @@ class Game extends React.Component {
         },
       ]),
       stepNumber: history.length,
-      
     });
   }
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      
     });
   }
-
-
 
   render() {
     const history = this.state.history;
@@ -100,10 +95,10 @@ class Game extends React.Component {
 
     return (
       <Box bgcolor="rgb(255, 251, 251)">
-        <Box marginBottom="1.2rem">
-          <AppBar position="static" color="secondary">
+        <Box marginBottom="1.2rem" style={{ width: "100%" }}>
+          <AppBar position="relative" color="secondary">
             <Box m="1.5rem">
-              <Grid container style={{ margin: "auto", width: "600px" }}>
+              <Grid container style={{ margin: "auto", width: "300px" }}>
                 <Grid item xs={1}>
                   <Avatar
                     style={{ width: "60px", height: "50px" }}
@@ -116,10 +111,10 @@ class Game extends React.Component {
                   <Typography
                     variant="h4"
                     align="center"
-                    component="h1"
+                    component="h4"
                     style={{ width: "100%" }}
                   >
-                    Tic Tac Toe Game Application
+                    Tic Tac Toe
                   </Typography>
                 </Grid>
               </Grid>
@@ -127,21 +122,21 @@ class Game extends React.Component {
           </AppBar>
         </Box>
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={6} style={{marginTop:"5rem"}}>
             <div
               style={{
                 display: "flex",
                 justifyContent: "flex-end",
-                marginTop: "4.7rem",
-                marginRight: "3.3rem",
+                marginBottom:"7%",
+                marginRight: "1rem",
+                marginLeft: "2.5rem",
               }}
-              className="game-info"
             >
               <Alert severity="info">
-                <AlertTitle>Game Situation</AlertTitle>
                 <strong>{status}</strong>
               </Alert>
             </div>
+
             <div
               className="game"
               style={{
@@ -161,7 +156,7 @@ class Game extends React.Component {
               </div>
             </div>
           </Grid>
-          <Grid item xs={3} style={{ marginTop: "5rem", marginRight: "1rem" }}>
+          <Grid item xs={5} style={{ marginTop: "5rem", marginRight: "1rem" }}>
             <ul>{moves}</ul>
           </Grid>
         </Grid>
